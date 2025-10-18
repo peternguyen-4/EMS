@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +10,9 @@ namespace EMS.Core.Models
     public class SpeciesData : SampleData
     {
         public int speciesID { get; set; }
+
+        [ForeignKey("speciesID")]
+        public Species species { get; set; } = null!;
         public int populationCount { get; set; }
         public int scatCount { get; set; }
         public float reproductiveFactor { get; set; }
