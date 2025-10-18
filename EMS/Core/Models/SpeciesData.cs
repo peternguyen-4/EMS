@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EMS.Core.Models
 {
-    internal class SpeciesData : SampleData
+    public class SpeciesData : SampleData
     {
         public int speciesID { get; set; }
         public int populationCount { get; set; }

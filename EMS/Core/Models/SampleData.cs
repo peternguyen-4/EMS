@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EMS.Core.Models
 {
-    internal abstract class SampleData
+    public abstract class SampleData
     {
         int sampleID { get; set; }
         DateTime date { get; set; }

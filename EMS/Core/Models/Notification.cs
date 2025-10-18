@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EMS.Core.Models
 {
-    internal class Notification
+    public class Notification
     {
         public int notificationID { get; set; }
         public int userID { get; set; }

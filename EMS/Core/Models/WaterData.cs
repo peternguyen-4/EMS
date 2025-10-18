@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EMS.Core.Models
 {
-    internal class WaterData : SampleData
+    public class WaterData : SampleData
     {
         public float pH {  get; set; }
         public float dissolvedOxygen { get; set; }

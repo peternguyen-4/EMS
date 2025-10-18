@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EMS.Core.Models
 {
-    internal class SoilData : SampleData
+    public class SoilData : SampleData
     {
         public int firmness { get; set; }
         public float pH { get; set; }
