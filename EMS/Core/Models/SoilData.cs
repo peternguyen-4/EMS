@@ -14,8 +14,10 @@ namespace EMS.Core.Models
         public float moisture { get; set; }
         public float nitrogen { get; set; }
         public float organicMatter { get; set; }
-        public string microbiology { get; set; }
-        public string contaminants { get; set; }
+        public string microbiology { get; set; } = string.Empty;
+        public string contaminants { get; set; } = string.Empty;
+
+        public SoilData() { }
 
         public SoilData(int sampleID, int firmness, DateTime date, float pH, float density, float moisture, float nitrogen, float organicMatter, string microbiology, string contaminants) : base (sampleID, date)
         {

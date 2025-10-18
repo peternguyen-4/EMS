@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,13 +9,16 @@ namespace EMS.Core.Models
 {
     public class User
     {
+        [Key]
         public int UserID { get; set; }
-        public string userName { get; set; }
-        public string password { get; set; }
-        public string firstName { get; set; }
-        public string lastName { get; set; }
-        public string role { get; set; }
-        public string assignedZone { get; set; }
+        public string userName { get; set; } = string.Empty;
+        public string password { get; set; } = string.Empty;
+        public string firstName { get; set; } = string.Empty;
+        public string lastName { get; set; } = string.Empty;
+        public string role { get; set; } = string.Empty;
+        public string assignedZone { get; set; } = string.Empty;
+
+        public User() { }
 
         public User(int userID, string userName, string password, string firstName, string lastName, string role, string assignedZone)
         {

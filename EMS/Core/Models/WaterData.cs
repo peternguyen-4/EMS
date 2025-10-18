@@ -14,8 +14,10 @@ namespace EMS.Core.Models
         public float turbidity { get; set; }
         public float hardness { get; set; }
         public float eutrophicPotential { get; set; }
-        public string microbiology { get; set; }
-        public string contaminants { get; set; }
+        public string microbiology { get; set; } = string.Empty;
+        public string contaminants { get; set; } = string.Empty;
+
+        public WaterData() { }
 
         public WaterData(int sampleID, DateTime date, float pH, float dissolvedOxygen, float salinity, float turbidity, float hardness, float eutrophicPotential, string microbiology, string contaminants) : base (sampleID, date)
         {
