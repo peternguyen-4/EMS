@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EMS.Core.Repositories
 {
-    public class UserTaskRespository
+    public class UserTaskRepository
     {
         private readonly AppDbContext _context = new AppDbContext();
 

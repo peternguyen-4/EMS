@@ -28,15 +28,32 @@ namespace EMS.Core.Repositories
             return user.password == password;
         }
 
-        public void AddUser(User user)
+        public void Add(User user)
         {
             _context.Users.Add(user);
             _context.SaveChanges();
         }
 
-        public void UpdateUser(User user)
+        public void Update(User user)
         {
             _context.Users.Update(user);
+            _context.SaveChanges();
+        }
+
+        public void Delete(int userID)
+        {
+            var user = _context.Users.Find(userID);
+            if (user != null)
+            {
+                _context.Users.Remove(user);
+                _context.SaveChanges();
+            }
+        }
+
+        public void ChangePassword(int userID, string newPassword)
+        {
+            var user = _context.Users.First(u => u.userID == userID);
+            user.password = newPassword;
             _context.SaveChanges();
         }
     }

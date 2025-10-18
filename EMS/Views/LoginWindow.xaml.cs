@@ -1,4 +1,5 @@
-﻿using EMS.Core.Repositories;
+﻿using EMS.Core.Models;
+using EMS.Core.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,16 +37,24 @@ namespace EMS.Views
 
             if (isValid)
             {
-                MessageBox.Show("Login successful!");
+                User? loggedInUser = userRepo.GetUserByUsername(username);
 
-                MainWindow mainWindow = new MainWindow();
+                MainWindow mainWindow = new MainWindow(loggedInUser!);
                 mainWindow.Show();
 
                 this.Close();
             }
             else
             {
-                MessageBox.Show("Invalid username or password");
+                txtErrorMessage.Text = "Invalid username or password";
+            }
+        }
+
+        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                btnLogin_Click(this, new RoutedEventArgs());
             }
         }
     }

@@ -10,7 +10,7 @@ namespace EMS.Core.Models
     public class User
     {
         [Key]
-        public int UserID { get; set; }
+        public int userID { get; set; }
         public string userName { get; set; } = string.Empty;
         public string password { get; set; } = string.Empty;
         public string firstName { get; set; } = string.Empty;
@@ -22,7 +22,7 @@ namespace EMS.Core.Models
 
         public User(int userID, string userName, string password, string firstName, string lastName, string role, string assignedZone)
         {
-            UserID = userID;
+            this.userID = userID;
             this.userName = userName;
             this.password = password;
             this.firstName = firstName;
