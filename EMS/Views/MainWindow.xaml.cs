@@ -35,37 +35,37 @@ namespace EMS
         private void BtnSoil_Click(object sender, RoutedEventArgs e)
         {
             //var window = new SoilManagementWindow(currentUser);
-            //window.Show();
+            //WindowManager.Open(this, window);
         }
 
         private void BtnWater_Click(object sender, RoutedEventArgs e)
         {
             //var window = new WaterManagementWindow(currentUser);
-            //window.Show();
+            //WindowManager.Open(this, window);
         }
 
         private void BtnSpecies_Click(object sender, RoutedEventArgs e)
         {
             //var window = new SpeciesManagementWindow(currentUser);
-            //window.Show();
+            //WindowManager.Open(this, window);
         }
 
         private void BtnNotifications_Click(object sender, RoutedEventArgs e)
         {
             //var window = new NotificationsWindow(currentUser);
-            //window.Show();
+            //WindowManager.Open(this, window);
         }
 
         private void BtnTasks_Click(object sender, RoutedEventArgs e)
         {
             //var window = new TasksWindow(currentUser);
-            //window.Show();
+            //WindowManager.Open(this, window);
         }
 
         private void BtnExport_Click(object sender, RoutedEventArgs e)
         {
             //var window = new ExportDataWindow(currentUser);
-            //window.Show();
+            //WindowManager.Open(this, window);
         }
 
         private void BtnUserDetails_Click(object sender, RoutedEventArgs e)
