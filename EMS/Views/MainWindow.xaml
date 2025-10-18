@@ -47,7 +47,7 @@
 
         <DataGrid x:Name="dgNotifications" Grid.Row="1" Grid.Column="1" AutoGenerateColumns="False" CanUserAddRows="False" Margin="0,0,0,5">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Title" Binding="{Binding title}" Width="*"/>
+                <DataGridTextColumn Header="Notification" Binding="{Binding title}" Width="*"/>
                 <DataGridTextColumn Header="Description" Binding="{Binding description}" Width="2*"/>
                 <DataGridTextColumn Header="Date" Binding="{Binding creationDate}" Width="*"/>
             </DataGrid.Columns>
@@ -55,7 +55,7 @@
 
         <DataGrid x:Name="dgTasks" Grid.Row="2" Grid.Column="1" AutoGenerateColumns="False" CanUserAddRows="False" Margin="0,5,0,0">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Title" Binding="{Binding title}" Width="*"/>
+                <DataGridTextColumn Header="Task" Binding="{Binding title}" Width="*"/>
                 <DataGridTextColumn Header="Description" Binding="{Binding description}" Width="2*"/>
                 <DataGridTextColumn Header="Date" Binding="{Binding creationDate}" Width="*"/>
             </DataGrid.Columns>
