@@ -34,8 +34,8 @@ namespace EMS
         // Button click handlers - open new windows for modules
         private void BtnSoil_Click(object sender, RoutedEventArgs e)
         {
-            //var window = new SoilManagementWindow(currentUser);
-            //WindowManager.Open(this, window);
+            var window = new SoilManagementWindow();
+            WindowManager.Open(this, window);
         }
 
         private void BtnWater_Click(object sender, RoutedEventArgs e)

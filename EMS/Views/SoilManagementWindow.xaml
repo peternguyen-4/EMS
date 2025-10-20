@@ -1,0 +1,91 @@
+﻿<Window x:Class="EMS.Views.SoilManagementWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+        Title="Soil Management" Height="800" Width="1200"
+        MinWidth="800" MinHeight="600"
+        WindowStartupLocation="CenterScreen"
+        Loaded="SoilManagementWindow_Loaded">
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Top controls -->
+            <RowDefinition Height="2*"/>
+            <!-- DataGrid (grows) -->
+            <RowDefinition Height="*"/>
+            <!-- Chart area (grows) -->
+        </Grid.RowDefinitions>
+
+        <!-- TOP BAR: Buttons + Filters -->
+        <DockPanel Grid.Row="0" LastChildFill="False" Margin="0,0,0,8">
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Left" VerticalAlignment="Center" Margin="0,0,12,0">
+                <Button x:Name="AddRecordButton" Content="Add Record" Width="110" Margin="0,0,8,0" Click="AddRecordButton_Click"/>
+                <Button x:Name="HomeButton" Content="Home" Width="90" Margin="0,0,8,0" Click="HomeButton_Click"/>
+                <Button x:Name="LogoutButton" Content="Logout" Width="90" Click="LogoutButton_Click"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" VerticalAlignment="Center">
+                <TextBlock VerticalAlignment="Center" Margin="0,0,6,0" Text="Start:"/>
+                <DatePicker x:Name="StartDatePicker" Width="140" Margin="0,0,8,0"/>
+                <TextBlock VerticalAlignment="Center" Margin="0,0,6,0" Text="End:"/>
+                <DatePicker x:Name="EndDatePicker" Width="140" Margin="0,0,8,0"/>
+                <Button x:Name="FilterButton" Content="Filter" Width="90" Click="FilterButton_Click"/>
+            </StackPanel>
+        </DockPanel>
+
+        <!-- DATA GRID -->
+        <DataGrid x:Name="SoilDataGrid" Grid.Row="1"
+          AutoGenerateColumns="False"
+          IsReadOnly="True"
+          SelectionMode="Single"
+          HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+          Margin="0,0,0,8">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="SampleID" Binding="{Binding sampleID}" Width="Auto"/>
+                <DataGridTextColumn Header="Date" Binding="{Binding date}" Width="Auto"/>
+                <DataGridTextColumn Header="pH" Binding="{Binding pH}" Width="*"/>
+                <DataGridTextColumn Header="Firmness" Binding="{Binding firmness}" Width="*"/>
+                <DataGridTextColumn Header="Density" Binding="{Binding density}" Width="*"/>
+                <DataGridTextColumn Header="Moisture" Binding="{Binding moisture}" Width="*"/>
+                <DataGridTextColumn Header="Nitrogen" Binding="{Binding nitrogen}" Width="*"/>
+                <DataGridTextColumn Header="Organic Matter" Binding="{Binding organicMatter}" Width="*"/>
+                <DataGridTextColumn Header="Microbiology" Binding="{Binding microbiology}" Width="*"/>
+                <DataGridTextColumn Header="Contaminants" Binding="{Binding contaminants}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+        <!-- CHART AREA -->
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="220"/>
+                <!-- chart controls -->
+                <ColumnDefinition Width="*"/>
+                <!-- chart canvas -->
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0" Margin="0,0,12,0">
+                <TextBlock FontWeight="Bold" Margin="0,0,0,6">Chart Type</TextBlock>
+                <ComboBox x:Name="ChartTypeComboBox" SelectionChanged="ChartTypeComboBox_SelectionChanged">
+                    <ComboBoxItem>pH</ComboBoxItem>
+                    <ComboBoxItem>Firmness</ComboBoxItem>
+                    <ComboBoxItem>Density</ComboBoxItem>
+                    <ComboBoxItem>Moisture</ComboBoxItem>
+                    <ComboBoxItem>Nitrogen</ComboBoxItem>
+                    <ComboBoxItem>Organic Matter</ComboBoxItem>
+                </ComboBox>
+
+                <TextBlock FontWeight="Bold" Margin="0,12,0,6">Chart Options</TextBlock>
+                <CheckBox x:Name="ShowLegendCheckbox" Content="Show Legend" IsChecked="True" Checked="ChartOptions_Changed" Unchecked="ChartOptions_Changed"/>
+                <CheckBox x:Name="ShowLabelsCheckbox" Content="Show Data Labels" IsChecked="False" Checked="ChartOptions_Changed" Unchecked="ChartOptions_Changed"/>
+            </StackPanel>
+
+            <Grid Grid.Column="1">
+                <!-- Cartesian chart for line graph -->
+                <lvc:CartesianChart x:Name="CartesianChart" LegendLocation="Right" Margin="0" />
+
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
