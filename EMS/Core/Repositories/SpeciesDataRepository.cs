@@ -10,13 +10,20 @@ using System.Threading.Tasks;
 
 namespace EMS.Core.Repositories
 {
-    public class SpeciesDataRepository : IRepository<SpeciesData>
+    public class SpeciesDataRepository : IRepository<SpeciesData>, IExportable
     {
         private readonly AppDbContext _context = new AppDbContext();
+
+        public string Name => "Species";
 
         public List<SpeciesData> GetAll()
         {
             return _context.SpeciesData.Include(sd => sd.species).ToList();
+        }
+
+        public IEnumerable<object> GetAllForExport()
+        {
+            return GetAll();
         }
 
         public SpeciesData? GetById(int sampleID)

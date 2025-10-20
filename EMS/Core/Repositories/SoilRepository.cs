@@ -9,13 +9,20 @@ using System.Threading.Tasks;
 
 namespace EMS.Core.Repositories
 {
-    public class SoilRepository : IRepository<SoilData>
+    public class SoilRepository : IRepository<SoilData>, IExportable
     {
         private readonly AppDbContext _context = new AppDbContext();
+
+        public string Name => "Soil";
 
         public List<SoilData> GetAll()
         {
             return _context.SoilSamples.ToList();
+        }
+
+        public IEnumerable<object> GetAllForExport()
+        {
+            return GetAll();
         }
 
         public SoilData? GetById(int sampleID)

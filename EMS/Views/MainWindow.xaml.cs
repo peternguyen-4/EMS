@@ -74,8 +74,8 @@ namespace EMS
 
         private void BtnExport_Click(object sender, RoutedEventArgs e)
         {
-            //var window = new ExportDataWindow(currentUser);
-            //WindowManager.Open(this, window);
+            var window = new ExportDataWindow();
+            WindowManager.Open(this, window);
         }
 
         private void BtnUserDetails_Click(object sender, RoutedEventArgs e)
