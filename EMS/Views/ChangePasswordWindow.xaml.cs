@@ -34,6 +34,7 @@ namespace EMS.Views
             }
 
             _userRepo.ChangePassword(_currentUser.userID, newPass);
+            _currentUser.password = newPass;
             MessageBox.Show("Password changed successfully.");
             this.Close();
         }

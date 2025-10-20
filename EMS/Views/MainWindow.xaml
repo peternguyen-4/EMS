@@ -39,7 +39,7 @@
             <Button Content="Add Notification" Grid.Row="3" Margin="5" Click="BtnNotifications_Click"/>
             <Button Content="Add Task" Grid.Row="4" Margin="5" Click="BtnTasks_Click"/>
             <Button Content="Export Data" Grid.Row="5" Margin="5" Click="BtnExport_Click"/>
-            <Button Content="UserDetails" Grid.Row="6" Margin="5" Click="BtnUserDetails_Click"/>
+            <Button Content="User Details" Grid.Row="6" Margin="5" Click="BtnUserDetails_Click"/>
             <Button Content="Logout" Grid.Row="7" Margin="5" Click="BtnLogout_Click"/>
         </Grid>
 

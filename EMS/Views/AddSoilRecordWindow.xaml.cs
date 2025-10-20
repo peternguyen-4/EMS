@@ -16,7 +16,7 @@ namespace EMS.Views
             DatePicker.SelectedDate = DateTime.Today;
         }
 
-        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {

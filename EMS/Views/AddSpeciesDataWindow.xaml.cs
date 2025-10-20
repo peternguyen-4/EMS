@@ -28,7 +28,7 @@ namespace EMS.Views
             SpeciesComboBox.SelectedIndex = 0;
         }
 
-        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             if (SpeciesComboBox.SelectedItem is not Species selectedSpecies)
             {

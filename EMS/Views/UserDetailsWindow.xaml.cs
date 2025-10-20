@@ -21,6 +21,7 @@ namespace EMS.Views
             txtFirstName.Text = currentUser.firstName;
             txtLastName.Text = currentUser.lastName;
             txtRole.Text = currentUser.role;
+            txtZone.Text = currentUser.assignedZone;
 
             // Masked password display (first and last characters)
             if (!string.IsNullOrEmpty(currentUser.password))
@@ -40,7 +41,10 @@ namespace EMS.Views
         private void BtnChangePassword_Click(object sender, RoutedEventArgs e)
         {
             var changePasswordWindow = new ChangePasswordWindow(currentUser);
-            WindowManager.Open(this, changePasswordWindow);
+            bool? result = changePasswordWindow.ShowDialog();
+
+            // Reload details after password might have changed
+            LoadUserDetails();
         }
 
         private void BtnHome_Click(object sender, RoutedEventArgs e)

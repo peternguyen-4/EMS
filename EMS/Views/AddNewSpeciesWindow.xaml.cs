@@ -14,7 +14,7 @@ namespace EMS.Views
             InitializeComponent();
         }
 
-        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             var name = SpeciesNameTextBox.Text.Trim();
             if (string.IsNullOrEmpty(name))
