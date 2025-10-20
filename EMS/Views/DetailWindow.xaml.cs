@@ -27,6 +27,8 @@ namespace EMS.Views
             description = notification.description;
             creationDate = notification.creationDate;
 
+            this.Title = $"View Notification";
+
             DataContext = this;
         }
 
@@ -39,6 +41,8 @@ namespace EMS.Views
             title = task.title;
             description = task.description;
             creationDate = task.creationDate;
+
+            this.Title = $"View Task";
 
             DataContext = this;
         }

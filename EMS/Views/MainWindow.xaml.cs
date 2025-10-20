@@ -46,20 +46,30 @@ namespace EMS
 
         private void BtnSpecies_Click(object sender, RoutedEventArgs e)
         {
-            //var window = new SpeciesManagementWindow(currentUser);
-            //WindowManager.Open(this, window);
+            var window = new SpeciesManagementWindow();
+            WindowManager.Open(this, window);
         }
 
         private void BtnNotifications_Click(object sender, RoutedEventArgs e)
         {
-            //var window = new NotificationsWindow(currentUser);
-            //WindowManager.Open(this, window);
+            var addWindow = new AddEntryWindow("Notification", currentUser.userID);
+            addWindow.Owner = this;
+            if (addWindow.ShowDialog() == true)
+            {
+                // Refresh Notifications grid
+                LoadNotifications();
+            }
         }
 
         private void BtnTasks_Click(object sender, RoutedEventArgs e)
         {
-            //var window = new TasksWindow(currentUser);
-            //WindowManager.Open(this, window);
+            var addWindow = new AddEntryWindow("Task", currentUser.userID);
+            addWindow.Owner = this;
+            if (addWindow.ShowDialog() == true)
+            {
+                // Refresh Tasks grid
+                LoadTasks();
+            }
         }
 
         private void BtnExport_Click(object sender, RoutedEventArgs e)
@@ -88,7 +98,7 @@ namespace EMS
                 if (detail.ShowDialog() == true)
                 {
                     // Refresh notifications if terminated
-                    dgNotifications.ItemsSource = _notificationRepo.GetActiveByUser(currentUser.userID);
+                    LoadNotifications();
                 }
             }
         }
@@ -101,7 +111,7 @@ namespace EMS
                 if (detail.ShowDialog() == true)
                 {
                     // Refresh tasks if terminated
-                    dgTasks.ItemsSource = _taskRepo.GetActiveByUser(currentUser.userID);
+                    LoadTasks();
                 }
             }
         }

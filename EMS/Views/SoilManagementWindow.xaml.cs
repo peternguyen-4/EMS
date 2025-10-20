@@ -88,19 +88,27 @@ namespace EMS.Views
                 var items = GetFilteredItems().ToList();
                 var selected = (ChartTypeComboBox.SelectedItem as ComboBoxItem)?.Content?.ToString() ?? "pH";
 
-                if (selected == "pH")
-                    ShowTimeSeries(items, x => x.pH, "pH");
-                else if (selected == "Firmness")
-                    ShowTimeSeries(items, x => x.firmness, "Firmness");
-                else if (selected == "Density")
-                    ShowTimeSeries(items, x => x.density, "Density");
-                else if (selected == "Moisture")
-                    ShowTimeSeries(items, x => x.moisture, "Moisture");
-                else if (selected == "Nitrogen")
-                    ShowTimeSeries(items, x => x.nitrogen, "Nitrogen");
-                else if (selected == "Organic Matter")
-                    ShowTimeSeries(items, x => x.organicMatter, "Organic Matter");
-
+                switch (selected)
+                {
+                    case "pH":
+                        ShowTimeSeries(items, x => x.pH, "pH");
+                        break;
+                    case "Firmness":
+                        ShowTimeSeries(items, x => x.firmness, "Firmness");
+                        break;
+                    case "Density":
+                        ShowTimeSeries(items, x => x.density, "Density");
+                        break;
+                    case "Moisture":
+                        ShowTimeSeries(items, x => x.moisture, "Moisture");
+                        break;
+                    case "Nitrogen":
+                        ShowTimeSeries(items, x => x.nitrogen, "Nitrogen");
+                        break;
+                    case "Organic Matter":
+                        ShowTimeSeries(items, x => x.organicMatter, "Organic Matter");
+                        break;
+                }
             }
             finally
             {

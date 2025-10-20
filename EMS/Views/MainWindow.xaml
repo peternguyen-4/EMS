@@ -36,8 +36,8 @@
             <Button Content="Soil Management" Grid.Row="0" Margin="5" Click="BtnSoil_Click"/>
             <Button Content="Water Management" Grid.Row="1" Margin="5" Click="BtnWater_Click"/>
             <Button Content="Species Management" Grid.Row="2" Margin="5" Click="BtnSpecies_Click"/>
-            <Button Content="Set Notification" Grid.Row="3" Margin="5" Click="BtnNotifications_Click"/>
-            <Button Content="Set Task" Grid.Row="4" Margin="5" Click="BtnTasks_Click"/>
+            <Button Content="Add Notification" Grid.Row="3" Margin="5" Click="BtnNotifications_Click"/>
+            <Button Content="Add Task" Grid.Row="4" Margin="5" Click="BtnTasks_Click"/>
             <Button Content="Export Data" Grid.Row="5" Margin="5" Click="BtnExport_Click"/>
             <Button Content="UserDetails" Grid.Row="6" Margin="5" Click="BtnUserDetails_Click"/>
             <Button Content="Logout" Grid.Row="7" Margin="5" Click="BtnLogout_Click"/>

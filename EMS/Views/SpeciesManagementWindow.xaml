@@ -1,11 +1,11 @@
-﻿<Window x:Class="EMS.Views.WaterManagementWindow"
+﻿<Window x:Class="EMS.Views.SpeciesManagementWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
-        Title="Water Management" Height="800" Width="1200"
+        Title="Species Management" Height="800" Width="1200"
         MinWidth="800" MinHeight="600"
         WindowStartupLocation="CenterScreen"
-        Loaded="WaterManagementWindow_Loaded">
+        Loaded="SpeciesManagementWindow_Loaded">
 
     <Grid Margin="10">
         <Grid.RowDefinitions>
@@ -17,22 +17,27 @@
         <!-- Top controls -->
         <DockPanel Grid.Row="0" LastChildFill="False" Margin="0,0,0,8">
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Left" VerticalAlignment="Center" Margin="0,0,12,0">
-                <Button x:Name="AddRecordButton" Content="Add Record" Width="110" Margin="0,0,8,0" Click="AddRecordButton_Click"/>
+                <Button x:Name="AddNewSpeciesButton" Content="Add New Species" Width="120" Margin="0,0,8,0" Click="AddNewSpeciesButton_Click"/>
+                <Button x:Name="AddSpeciesDataButton" Content="Add Species Data" Width="120" Margin="0,0,8,0" Click="AddSpeciesDataButton_Click"/>
                 <Button x:Name="HomeButton" Content="Home" Width="90" Margin="0,0,8,0" Click="HomeButton_Click"/>
                 <Button x:Name="LogoutButton" Content="Logout" Width="90" Click="LogoutButton_Click"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" VerticalAlignment="Center">
-                <TextBlock VerticalAlignment="Center" Margin="0,0,6,0" Text="Start:"/>
-                <DatePicker x:Name="StartDatePicker" Width="140" Margin="0,0,8,0"/>
-                <TextBlock VerticalAlignment="Center" Margin="0,0,6,0" Text="End:"/>
-                <DatePicker x:Name="EndDatePicker" Width="140" Margin="0,0,8,0"/>
-                <Button x:Name="FilterButton" Content="Filter" Width="90" Click="FilterButton_Click"/>
+                <TextBlock VerticalAlignment="Center" Margin="0,0,6,0" Text="Species:"/>
+                <ComboBox x:Name="SpeciesComboBox" Width="180" SelectionChanged="SpeciesComboBox_SelectionChanged"/>
+
+                <TextBlock VerticalAlignment="Center" Margin="12,0,6,0" Text="Start:"/>
+                <DatePicker x:Name="StartDatePicker" Width="140"/>
+                <TextBlock VerticalAlignment="Center" Margin="6,0,6,0" Text="End:"/>
+                <DatePicker x:Name="EndDatePicker" Width="140"/>
+
+                <Button x:Name="FilterButton" Content="Filter" Width="90" Margin="6,0,0,0" Click="FilterButton_Click"/>
             </StackPanel>
         </DockPanel>
 
         <!-- DataGrid -->
-        <DataGrid x:Name="WaterDataGrid" Grid.Row="1" AutoGenerateColumns="False"
+        <DataGrid x:Name="SpeciesDataGrid" Grid.Row="1" AutoGenerateColumns="False"
                   IsReadOnly="True"
                   SelectionMode="Single"
                   HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
@@ -40,14 +45,14 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="SampleID" Binding="{Binding sampleID}" Width="Auto"/>
                 <DataGridTextColumn Header="Date" Binding="{Binding date}" Width="Auto"/>
-                <DataGridTextColumn Header="pH" Binding="{Binding pH}" Width="*"/>
-                <DataGridTextColumn Header="Dissolved Oxygen" Binding="{Binding dissolvedOxygen}" Width="*"/>
-                <DataGridTextColumn Header="Salinity" Binding="{Binding salinity}" Width="*"/>
-                <DataGridTextColumn Header="Turbidity" Binding="{Binding turbidity}" Width="*"/>
-                <DataGridTextColumn Header="Hardness" Binding="{Binding hardness}" Width="*"/>
-                <DataGridTextColumn Header="Eutrophic Potential" Binding="{Binding eutrophicPotential}" Width="*"/>
-                <DataGridTextColumn Header="Microbiology" Binding="{Binding microbiology}" Width="*"/>
-                <DataGridTextColumn Header="Contaminants" Binding="{Binding contaminants}" Width="*"/>
+                <DataGridTextColumn Header="SpeciesID" Binding="{Binding speciesID}" Width="Auto"/>
+                <DataGridTextColumn Header="Species" Binding="{Binding species.speciesName}" Width="*"/>
+                <DataGridTextColumn Header="Population Count" Binding="{Binding populationCount}" Width="*"/>
+                <DataGridTextColumn Header="Scat Count" Binding="{Binding scatCount}" Width="*"/>
+                <DataGridTextColumn Header="Reproductive Factor" Binding="{Binding reproductiveFactor}" Width="*"/>
+                <DataGridTextColumn Header="Known Habitats" Binding="{Binding knownHabitats}" Width="*"/>
+                <DataGridTextColumn Header="Health Concerns" Binding="{Binding healthConcerns}" Width="*"/>
+                <DataGridTextColumn Header="Additional Notes" Binding="{Binding additionalNotes}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
 
@@ -61,12 +66,9 @@
             <StackPanel Grid.Column="0" Margin="0,0,12,0">
                 <TextBlock FontWeight="Bold" Margin="0,0,0,6">Chart Type</TextBlock>
                 <ComboBox x:Name="ChartTypeComboBox" SelectionChanged="ChartTypeComboBox_SelectionChanged">
-                    <ComboBoxItem>pH</ComboBoxItem>
-                    <ComboBoxItem>Dissolved Oxygen</ComboBoxItem>
-                    <ComboBoxItem>Salinity</ComboBoxItem>
-                    <ComboBoxItem>Turbidity</ComboBoxItem>
-                    <ComboBoxItem>Hardness</ComboBoxItem>
-                    <ComboBoxItem>Eutrophic Potential</ComboBoxItem>
+                    <ComboBoxItem>Population Count</ComboBoxItem>
+                    <ComboBoxItem>Scat Count</ComboBoxItem>
+                    <ComboBoxItem>Reproductive Factor</ComboBoxItem>
                 </ComboBox>
 
                 <TextBlock FontWeight="Bold" Margin="0,12,0,6">Chart Options</TextBlock>
