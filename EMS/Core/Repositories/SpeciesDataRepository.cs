@@ -23,8 +23,20 @@ namespace EMS.Core.Repositories
 
         public IEnumerable<object> GetAllForExport()
         {
-            return GetAll();
+            return GetAll().Select(sd => new
+            {
+                sd.sampleID,
+                sd.date,
+                Species = sd.species.speciesName, 
+                sd.populationCount,
+                sd.scatCount,
+                sd.reproductiveFactor,
+                sd.knownHabitats,
+                sd.healthConcerns,
+                sd.additionalNotes
+            }).ToList();
         }
+
 
         public SpeciesData? GetById(int sampleID)
         {
