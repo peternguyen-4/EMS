@@ -1,0 +1,47 @@
+﻿<Window x:Class="EMS.Views.AddWaterRecordWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Add Water Record" Height="400" Width="500"
+        WindowStartupLocation="CenterOwner"
+        MinHeight="500" MinWidth="500">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Margin="0,0,0,10">
+            <TextBlock Text="Date:"/>
+            <DatePicker x:Name="DatePicker" SelectedDate="{Binding date}" Margin="0,0,0,8"/>
+
+            <TextBlock Text="pH:"/>
+            <TextBox x:Name="pHTextBox" Margin="0,0,0,8"/>
+
+            <TextBlock Text="Dissolved Oxygen:"/>
+            <TextBox x:Name="DissolvedOxygenTextBox" Margin="0,0,0,8"/>
+
+            <TextBlock Text="Salinity:"/>
+            <TextBox x:Name="SalinityTextBox" Margin="0,0,0,8"/>
+
+            <TextBlock Text="Turbidity:"/>
+            <TextBox x:Name="TurbidityTextBox" Margin="0,0,0,8"/>
+
+            <TextBlock Text="Hardness:"/>
+            <TextBox x:Name="HardnessTextBox" Margin="0,0,0,8"/>
+
+            <TextBlock Text="Eutrophic Potential:"/>
+            <TextBox x:Name="EutrophicPotentialTextBox" Margin="0,0,0,8"/>
+
+            <TextBlock Text="Microbiology:"/>
+            <TextBox x:Name="MicrobiologyTextBox" Margin="0,0,0,8"/>
+
+            <TextBlock Text="Contaminants:"/>
+            <TextBox x:Name="ContaminantsTextBox" Margin="0,0,0,8"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="Save" Width="90" Margin="0,0,8,0" Click="SaveButton_Click"/>
+            <Button Content="Cancel" Width="90" Click="CancelButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

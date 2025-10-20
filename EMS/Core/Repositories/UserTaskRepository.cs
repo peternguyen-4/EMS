@@ -26,7 +26,7 @@ namespace EMS.Core.Repositories
         public List<UserTask> GetActiveByUser(int userID)
         {
             return _context.Tasks
-                .Where(t => t.userID == userID && t.isActive)
+                .Where(t => t.userID == userID && t.isActive == true)
                 .OrderByDescending(t => t.creationDate)
                 .ToList();
         }

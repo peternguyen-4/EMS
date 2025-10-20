@@ -25,7 +25,7 @@ namespace EMS.Core.Repositories
         public List<Notification> GetActiveByUser(int userID)
         {
             return _context.Notifications
-                .Where(n => n.userID == userID && n.isActive)
+                .Where(n => n.userID == userID && n.isActive == true)
                 .OrderByDescending(n => n.creationDate)
                 .ToList();
         }

@@ -13,7 +13,7 @@ namespace EMS.Core.Models
         public int notificationID { get; set; }
         public int userID { get; set; }
         public DateTime creationDate { get; set; }
-        public DateTime terminationDate { get; set; }
+        public DateTime? terminationDate { get; set; }
         public bool isActive { get; set; }
         public string title { get; set; } = string.Empty;
         public string description { get; set; } = string.Empty;

@@ -40,8 +40,8 @@ namespace EMS
 
         private void BtnWater_Click(object sender, RoutedEventArgs e)
         {
-            //var window = new WaterManagementWindow(currentUser);
-            //WindowManager.Open(this, window);
+            var window = new WaterManagementWindow();
+            WindowManager.Open(this, window);
         }
 
         private void BtnSpecies_Click(object sender, RoutedEventArgs e)
@@ -78,6 +78,32 @@ namespace EMS
         {
             var logoutWindow = new LogoutWindow();
             WindowManager.Open(this, logoutWindow);
+        }
+
+        private void dgNotifications_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (dgNotifications.SelectedItem is Notification selected)
+            {
+                var detail = new DetailWindow(selected) { Owner = this };
+                if (detail.ShowDialog() == true)
+                {
+                    // Refresh notifications if terminated
+                    dgNotifications.ItemsSource = _notificationRepo.GetActiveByUser(currentUser.userID);
+                }
+            }
+        }
+
+        private void dgTasks_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (dgTasks.SelectedItem is UserTask selected)
+            {
+                var detail = new DetailWindow(selected) { Owner = this };
+                if (detail.ShowDialog() == true)
+                {
+                    // Refresh tasks if terminated
+                    dgTasks.ItemsSource = _taskRepo.GetActiveByUser(currentUser.userID);
+                }
+            }
         }
     }
 }
