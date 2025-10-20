@@ -21,6 +21,7 @@ namespace EMS.Views
             txtFirstName.Text = currentUser.firstName;
             txtLastName.Text = currentUser.lastName;
             txtRole.Text = currentUser.role;
+            txtZone.Text = currentUser.assignedZone;
 
             // Masked password display (first and last characters)
             if (!string.IsNullOrEmpty(currentUser.password))
