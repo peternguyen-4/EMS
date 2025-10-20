@@ -12,7 +12,17 @@ namespace EMS.Core.Repositories
 {
     public class SpeciesDataRepository : IRepository<SpeciesData>, IExportable
     {
-        private readonly AppDbContext _context = new AppDbContext();
+        private readonly AppDbContext _context;
+
+        public SpeciesDataRepository()
+        {
+            _context = new AppDbContext();
+        }
+
+        public SpeciesDataRepository(AppDbContext context)
+        {
+            _context = context;
+        }
 
         public string Name => "Species";
 

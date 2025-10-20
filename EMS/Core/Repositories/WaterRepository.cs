@@ -12,7 +12,17 @@ namespace EMS.Core.Repositories
 {
     public class WaterRepository : IRepository<WaterData>, IExportable
     {
-        private readonly AppDbContext _context = new AppDbContext();
+        private readonly AppDbContext _context;
+
+        public WaterRepository()
+        {
+            _context = new AppDbContext();
+        }
+
+        public WaterRepository(AppDbContext context)
+        {
+            _context = context;
+        }
 
         public string Name => "Water";
 

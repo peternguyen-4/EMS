@@ -11,6 +11,11 @@ namespace EMS.Core.Data
 {
     public class AppDbContext : DbContext
     {
+
+        public AppDbContext() { }
+
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
+
         public DbSet<User> Users { get; set; }
         public DbSet<SoilData> SoilSamples { get; set; }
         public DbSet<WaterData> WaterSamples { get; set; }
@@ -21,7 +26,11 @@ namespace EMS.Core.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source=EMSApp.db");
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlite("Data Source=EMSApp.db");
+            }
+            
         }
 
     }

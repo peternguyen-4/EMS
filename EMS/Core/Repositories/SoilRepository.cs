@@ -12,7 +12,17 @@ namespace EMS.Core.Repositories
 {
     public class SoilRepository : IRepository<SoilData>, IExportable
     {
-        private readonly AppDbContext _context = new AppDbContext();
+        private readonly AppDbContext _context;
+
+        public SoilRepository()
+        {
+            _context = new AppDbContext();
+        }
+
+        public SoilRepository(AppDbContext context)
+        {
+            _context = context;
+        }
 
         public string Name => "Soil";
 
