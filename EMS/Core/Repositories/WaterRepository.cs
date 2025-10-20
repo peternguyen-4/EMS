@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace EMS.Core.Repositories
 {
@@ -22,7 +23,19 @@ namespace EMS.Core.Repositories
 
         public IEnumerable<object> GetAllForExport()
         {
-            return GetAll();
+            return GetAll().Select(water => new
+            {
+                water.sampleID,
+                water.date,
+                water.pH,
+                water.dissolvedOxygen,
+                water.salinity,
+                water.turbidity,
+                water.hardness,
+                water.eutrophicPotential,
+                water.microbiology,
+                water.contaminants
+            }).ToList();
         }
 
         public WaterData? GetById(int sampleID)

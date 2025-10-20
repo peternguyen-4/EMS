@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace EMS.Core.Repositories
 {
@@ -22,7 +23,19 @@ namespace EMS.Core.Repositories
 
         public IEnumerable<object> GetAllForExport()
         {
-            return GetAll();
+            return GetAll().Select(soil => new
+            {
+                soil.sampleID,
+                soil.date,
+                soil.pH,
+                soil.firmness,
+                soil.density,
+                soil.moisture,
+                soil.nitrogen,
+                soil.organicMatter,
+                soil.microbiology,
+                soil.contaminants
+            }).ToList();
         }
 
         public SoilData? GetById(int sampleID)
