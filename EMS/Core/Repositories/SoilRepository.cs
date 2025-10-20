@@ -1,5 +1,6 @@
 ﻿using EMS.Core.Data;
 using EMS.Core.Models;
+using EMS.Core.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace EMS.Core.Repositories
 {
-    public class SoilRepository
+    public class SoilRepository : IRepository<SoilData>
     {
         private readonly AppDbContext _context = new AppDbContext();
 

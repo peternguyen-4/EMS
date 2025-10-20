@@ -1,5 +1,6 @@
 ﻿using EMS.Core.Data;
 using EMS.Core.Models;
+using EMS.Core.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace EMS.Core.Repositories
 {
-    public class UserRepository
+    public class UserRepository : IRepository<User>
     {
         private readonly AppDbContext _context = new AppDbContext();
 
@@ -28,6 +29,15 @@ namespace EMS.Core.Repositories
             return user.password == password;
         }
 
+        List<User> IRepository<User>.GetAll()
+        {
+            return _context.Users.ToList();
+        }
+
+        User? IRepository<User>.GetById(int userID)
+        {
+            return _context.Users.Find(userID);
+        }
         public void Add(User user)
         {
             _context.Users.Add(user);
@@ -56,5 +66,7 @@ namespace EMS.Core.Repositories
             user.password = newPassword;
             _context.SaveChanges();
         }
+
+
     }
 }

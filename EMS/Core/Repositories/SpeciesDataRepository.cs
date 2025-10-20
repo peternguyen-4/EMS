@@ -1,5 +1,6 @@
 ﻿using EMS.Core.Data;
 using EMS.Core.Models;
+using EMS.Core.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace EMS.Core.Repositories
 {
-    public class SpeciesDataRepository
+    public class SpeciesDataRepository : IRepository<SpeciesData>
     {
         private readonly AppDbContext _context = new AppDbContext();
 
