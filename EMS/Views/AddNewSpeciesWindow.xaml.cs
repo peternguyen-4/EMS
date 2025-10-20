@@ -12,6 +12,13 @@ namespace EMS.Views
         public AddNewSpeciesWindow()
         {
             InitializeComponent();
+            LoadSpeciesGrid();
+        }
+        
+        private void LoadSpeciesGrid()
+        {
+            var speciesList = _speciesRepo.GetAll();
+            SpeciesDataGrid.ItemsSource = speciesList;
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
@@ -20,6 +27,12 @@ namespace EMS.Views
             if (string.IsNullOrEmpty(name))
             {
                 MessageBox.Show("Species name cannot be empty.", "Input Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            if (_speciesRepo.GetAll().Any(s => s.speciesName.Equals(name, StringComparison.OrdinalIgnoreCase)))
+            {
+                MessageBox.Show("This species already exists.", "Duplicate Entry", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
